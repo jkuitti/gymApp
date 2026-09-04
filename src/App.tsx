@@ -1,7 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-import Workouts from "./pages/Workouts";
+import Exercises from "./pages/Exercises";
 import Login from "./pages/Login";
+import NewExercise from "./pages/NewExercise";
+import Exercise from "./pages/Execise";
+import NewWorkout from "./pages/NewWorkout";
 
 function App() {
   return (
@@ -9,7 +12,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Homepage />} />
-        <Route path="/workouts" element={<Workouts />} />
+        <Route path="/exercises" element={<Exercises />} />
+        <Route path="/newexercise" element={<NewExercise />} />
+        <Route path="/exercises/:exerciseid" element={<Exercise />} />
+        <Route path="/newworkout" element={<NewWorkout />} />
       </Routes>
     </div>
   );

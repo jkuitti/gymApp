@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { useLogin } from "../hooks/mutations/useLogin";
 import { useNavigate } from "react-router-dom";
 
