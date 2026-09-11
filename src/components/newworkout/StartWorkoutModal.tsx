@@ -2,12 +2,14 @@ import { useNavigate } from "react-router-dom";
 import type { Exercise } from "../../types/exercise";
 import { useCreateWorkout } from "../../hooks/mutations/useCreateWorkout";
 import { useCurrentUser } from "../../hooks/queries/useCurrentUser";
+import { useWorkoutStore } from "../../store/workoutStore";
 
 type StartProps = {
   exercise: Exercise;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const StartWorkoutModal = ({ exercise, setOpenModal }: StartProps) => {
+  const resetWorkout = useWorkoutStore((store) => store.resetWorkout);
   const { data, error } = useCurrentUser();
   if (error) {
     throw error;
@@ -25,6 +27,7 @@ const StartWorkoutModal = ({ exercise, setOpenModal }: StartProps) => {
         },
         {
           onSuccess: () => {
+            resetWorkout();
             navigate("/ongoingworkout", {
               state: {
                 exerciseId: exercise.id,

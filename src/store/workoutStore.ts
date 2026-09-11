@@ -46,6 +46,7 @@ export const useWorkoutStore = create<WorkoutStore>((set) => ({
     set({
       moves: [],
       currentMoveIndex: 0,
+      currentSetNumber: 1,
     }),
 
   setMoveindex: (index: number) => set(() => ({ currentMoveIndex: index })),
