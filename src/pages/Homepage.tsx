@@ -1,6 +1,7 @@
 import NewWorkout from "../components/homepage/NewWorkout";
 import HistoryButton from "../components/homepage/HistoryButton";
 import ExercisesButton from "../components/homepage/ExercisesButton";
+import Logout from "../components/homepage/Logout";
 
 const Homepage = () => {
   return (
@@ -9,6 +10,7 @@ const Homepage = () => {
       <NewWorkout />
       <ExercisesButton />
       <HistoryButton />
+      <Logout />
     </div>
   );
 };

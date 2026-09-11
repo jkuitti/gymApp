@@ -40,7 +40,7 @@ const Login = () => {
         />
         <p>Password</p>
         <input
-          type="text"
+          type="password"
           className="bg-gray-300 text-black"
           onChange={(v) => setPassword(v.target.value)}
         />

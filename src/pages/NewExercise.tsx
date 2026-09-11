@@ -22,8 +22,11 @@ const NewExercise = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3 justify-center items-center min-h-screen">
-      <form onSubmit={handlesubmit} className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 justify-center items-center mt-20">
+      <form
+        onSubmit={handlesubmit}
+        className="flex flex-col gap-3 items-center"
+      >
         <p className="text-white"> Name of the exercise</p>
         <input
           type="text"

@@ -1,4 +1,3 @@
-import NewExerciseButton from "../components/exercises/NewExerciseButton";
 import { useNavigate } from "react-router-dom";
 import { useExercises } from "../hooks/queries/useExercises";
 import ExerciseCard from "../components/exercises/ExerciseCard";
@@ -22,12 +21,19 @@ const Exercises = () => {
         {!data || data.length === 0 ? (
           <div> no exercises </div>
         ) : (
-          data.map((exercise) => <ExerciseCard exercise={exercise} />)
+          data.map((exercise) => (
+            <ExerciseCard exercise={exercise} key={exercise.id} />
+          ))
         )}
       </div>
-      <NewExerciseButton />
       <button
-        className="text-white border rounded-lg p-2"
+        className="text-white border rounded-lg p-2 bg-black"
+        onClick={() => navigate("/newexercise")}
+      >
+        Add new exercise
+      </button>
+      <button
+        className="text-white border rounded-lg p-2 bg-black"
         onClick={() => navigate("/home")}
       >
         Back

@@ -4,6 +4,7 @@ export type Move = {
   reps: string;
   sets: number;
   exercise_id: number;
+  is_active: boolean;
 };
 
 export type NewMove = {
