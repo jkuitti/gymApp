@@ -5,6 +5,7 @@ export type Move = {
   sets: number;
   exercise_id: number;
   is_active: boolean;
+  move_number: number;
 };
 
 export type NewMove = {
@@ -12,4 +13,5 @@ export type NewMove = {
   reps: string;
   sets: number;
   exercise_id: number;
+  move_number: number;
 };

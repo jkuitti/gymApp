@@ -10,6 +10,7 @@ const Exercise = () => {
   const [reps, setReps] = useState<string>("");
   const [sets, setSets] = useState<number>(0);
   const [add, setAdd] = useState<boolean>(false);
+  const [moveNumber, setMoveNumber] = useState<number>(0);
 
   const navigate = useNavigate();
 
@@ -36,6 +37,7 @@ const Exercise = () => {
         reps: reps,
         sets: sets,
         exercise_id: Number(exerciseid),
+        move_number: moveNumber,
       },
       {
         onSuccess: () => {
@@ -79,6 +81,12 @@ const Exercise = () => {
             <input
               type="text"
               onChange={(v) => setSets(Number(v.target.value))}
+              className="bg-white text-black border rounded-lg p-1"
+            />
+            <p>Move number</p>
+            <input
+              type="text"
+              onChange={(v) => setMoveNumber(Number(v.target.value))}
               className="bg-white text-black border rounded-lg p-1"
             />
             <button

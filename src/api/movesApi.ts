@@ -15,7 +15,9 @@ const getMovesByExerciseId = async (exercise_id: number): Promise<Move[]> => {
   const { data, error } = await supabase
     .from("moves")
     .select("*")
-    .eq("exercise_id", exercise_id);
+    .eq("exercise_id", exercise_id)
+    .eq("is_active", true)
+    .order("move_number", { ascending: true });
 
   if (error) {
     throw error;

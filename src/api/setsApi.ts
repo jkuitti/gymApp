@@ -60,10 +60,63 @@ const getFullDetails = async (workoutId: number): Promise<FullSetDetails[]> => {
   return data;
 };
 
+const getPreviousWorkoutMoveInfo = async (
+  moveName: string,
+): Promise<FullSetDetails[]> => {
+  // Find the latest finished workout containing this move
+  const { data: workouts, error: workoutError } = await supabase
+    .from("workouts")
+    .select(
+      `
+      id,
+      finished_at,
+      status,
+      sets!inner(
+        moves_id,
+        move:moves_id!inner(name)
+      )
+    `,
+    )
+    .eq("status", "finished")
+    .eq("sets.move.name", moveName)
+    .order("finished_at", { ascending: false })
+    .limit(1);
+
+  if (workoutError) {
+    throw workoutError;
+  }
+
+  const latestWorkout = workouts?.[0];
+
+  if (!latestWorkout) {
+    return [];
+  }
+
+  // Get all sets for that workout + move
+  const { data, error } = await supabase
+    .from("sets")
+    .select(
+      `
+      *,
+      workout:workout_id(finished_at, status),
+      move:moves_id!inner(name)
+    `,
+    )
+    .eq("workout_id", latestWorkout.id)
+    .eq("move.name", moveName);
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+};
+
 export {
   getAllSets,
   getSetsByMovesId,
   getSetsByWorkoutId,
   saveSet,
   getFullDetails,
+  getPreviousWorkoutMoveInfo,
 };

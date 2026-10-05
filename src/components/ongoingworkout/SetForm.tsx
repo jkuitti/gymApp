@@ -51,9 +51,9 @@ const SetForm = ({
                 resetSet();
               } else {
                 nextMove();
+                resetSet();
               }
             } else {
-              resetSet();
               nextSet();
             }
           },

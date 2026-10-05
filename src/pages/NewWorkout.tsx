@@ -61,7 +61,14 @@ const NewWorkout = () => {
               {latestWorkout?.started_at &&
                 new Date(latestWorkout.started_at).toLocaleDateString("fi-FI")}
             </p>
-            <button className="rounded-lg border text-black bg-gray-300 mt-10 p-1 min-w-20">
+            <button
+              className="rounded-lg border text-black bg-gray-300 mt-10 p-1 min-w-20"
+              onClick={() =>
+                navigate("/ongoingworkout", {
+                  state: { exerciseId: latestWorkout?.exercise_id },
+                })
+              }
+            >
               Continue
             </button>
           </div>
