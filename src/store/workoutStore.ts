@@ -28,7 +28,7 @@ export const useWorkoutStore = create<WorkoutStore>((set) => ({
       currentSetNumber: state.currentSetNumber + 1,
     })),
   resetSet: () =>
-    set((state) => ({
+    set(() => ({
       currentSetNumber: 1,
     })),
 
